@@ -1,10 +1,17 @@
 from django.shortcuts import HttpResponse
+from django.template import loader
+from .models import Program
+from .models import Iteration
 
 # Create your views here.
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the program index.")
+    program_list = Program.objects.all()
+    template = loader.get_template('program/index.html')
+    context = {'program_list': program_list,
+               }
+    return HttpResponse(template.render(context, request))
 
 
 def details(request, program_title):
