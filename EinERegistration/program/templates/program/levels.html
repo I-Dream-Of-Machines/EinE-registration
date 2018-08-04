@@ -6,9 +6,9 @@
 </head>
 <body>
     <ul>
-        {% for p in program_list %}
+        {% for p in level_list %}
             <li>
-                <h2>{{ p.name }} Level {{ p.level }}</h2>
+                <h2> {{ program_title }} Level {{ p.level }}</h2>
 
                     <h3>Prerequisites</h3>
                     <p>{{ p.prerequisite }}</p>

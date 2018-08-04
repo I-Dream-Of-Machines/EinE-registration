@@ -9,7 +9,7 @@ class Program(models.Model):
 
 
 class ProgramLevel(models.Model):
-    type = models.ForeignKey(Program, on_delete=models.CASCADE)
+    category = models.ForeignKey(Program, on_delete=models.CASCADE)
     level = models.IntegerField()
     prerequisite = models.CharField(max_length=250)
     description = models.TextField()
