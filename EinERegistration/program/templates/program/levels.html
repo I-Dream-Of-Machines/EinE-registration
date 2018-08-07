@@ -6,17 +6,17 @@
 </head>
 <body>
     <ul>
-        {% for p in level_list %}
+        {% for l in level_list %}
             <li>
-                <h2> {{ program_title }} Level {{ p.level }}</h2>
+                <h2> {{ program_title }} Level {{ l.level }}</h2>
 
                     <h3>Prerequisites</h3>
-                    <p>{{ p.prerequisite }}</p>
+                    <p>{{ l.prerequisite }}</p>
                     <hr />
                     <h3>Description</h3>
-                    <p>{{ p.description }}</p>
+                    <p>{{ l.description }}</p>
                     <hr />
-                    <h3><a>Current Sessions</a></h3>
+                    <h3><a href="/program/{{ program_title }}/level_{{ l.level }}/upcoming_sessions">Upcoming Sessions</a></h3>
                     <hr />
             </li>
 

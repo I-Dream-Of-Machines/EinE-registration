@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if iteration_list %}
+        <ul>
+            {% for i in iteration_list %}
+                <li>
+                    <h2> {{ program_title }} Level {{ program_level }}</h2>
+
+                        <h3>Dates:</h3>
+                        <p>{{ i.start_date }} - {{ i.end_date }}</p>
+                        <hr />
+                        <h3>Times:</h3>
+                        <p>{{ i.start_time }} - {{ i.end_time }}</p>
+                        <hr />
+                        <h3>Region:</h3>
+                        <p>{{ i.region }}</p>
+                        <hr />
+                        <h3>JK:</h3>
+                        <p>{{ i.jk }}</p>
+                        <hr />
+                        <h3>Facilitator:</h3>
+                        <p>{{ i.facilitator }}</p>
+                        <hr />
+                </li>
+
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no sessions currently scheduled</p>
+    {% endif %}
+</body>
+</html>

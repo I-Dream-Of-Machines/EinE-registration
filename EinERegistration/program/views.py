@@ -25,12 +25,17 @@ def levels(request, program_title):
     return HttpResponse(template.render(context, request))
 
 
-def iterations(request, program_title, level):
+def iterations(request, program_title, program_level):
     program_list = Program.objects.filter(name=program_title)
-    level_list = ProgramLevel.objects.filter(category=program_list[0], level=level)
-    iteration_list = Iteration.objects.filter(level)
-    return HttpResponse("This is a list of upcoming sessions for level "
-                        + level_id+" of "+program_title+".")
+    level_list = ProgramLevel.objects.filter(category=program_list[0], level=program_level)
+    iteration_list = Iteration.objects.filter(program=level_list[0])
+    template = loader.get_template('program/iterations.html')
+    context = {
+        'iteration_list': iteration_list,
+        'program_level': program_level,
+        'program_title': program_title
+    }
+    return HttpResponse(template.render(context,request))
 
 
 
