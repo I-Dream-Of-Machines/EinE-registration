@@ -35,8 +35,25 @@ def iterations(request, program_title, program_level):
         'program_level': program_level,
         'program_title': program_title
     }
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context, request))
 
+
+def regions(request, region):
+    iteration_info_list = []
+    iteration_list = Iteration.objects.filter(region=region)
+    level_list = ProgramLevel.objects.all()
+    program_list = Program.objects.all()
+    if len(iteration_list) > 0:
+        for i in iteration_list:
+            i_level = level_list.get(id=i.program_id)
+            i_program = program_list.get(id=i_level.category_id)
+            iteration_info_list.append([i, i_level.level, i_program.name])
+    template = loader.get_template('program/regions.html')
+    context = {
+        'iteration_info_list': iteration_info_list,
+        'region': region
+    }
+    return HttpResponse(template.render(context, request))
 
 
 

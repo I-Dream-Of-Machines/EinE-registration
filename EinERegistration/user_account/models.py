@@ -29,16 +29,16 @@ class RegionalMember(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
 #     curriculum_vitae = models.FileField()
 #     region = models.CharField(max_length=2)  # Facilitation Region
-#
-#
-# class Guardian(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     phone_regex = RegexValidator(regex=r'^\d{3}\-\d{3}\-\d{4}',
-#                                  message="Phone number must be in the format: 999-999-9999")
-#     primary_contact_number = models.CharField(validators=[phone_regex])
-#     secondary_contact_number = models.CharField(validators=[phone_regex])
-#     address = models.TextField()  # Use Canada Post??
-#
-#
+
+
+class Guardian(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_regex = RegexValidator(regex=r'^\d{3}\-\d{3}\-\d{4}',
+                                 message="Phone number must be in the format: 999-999-9999")
+    primary_contact_number = models.CharField(validators=[phone_regex], max_length=12)
+    secondary_contact_number = models.CharField(validators=[phone_regex], max_length=12)
+    address = models.TextField()  # Use Canada Post??
+
+
 # class Child(models.Model):
 #     user = models.OneToOneField(Guardian, on_delete=models.CASCADE)
